@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring学习日记一, Life, study, share, communication">
-    <meta name="description" content="Spring学习由于个人因素spring刚开始的学习没有记录到博客上，只能从这节开始记录
-一.Spring介绍1.Spring是一个开源框架。
-2.Spring为简化企业级应用开发而生。使用Spring可以使简单的JavaBean实现以前只">
+    <meta name="keywords" content="Spring Diary2, Life, study, share, communication">
+    <meta name="description" content="通过注解配置Bean1.在classpath中扫描组件1.Spring能从classpath下自动扫描，侦测和实例化具有特定注解的组件
+2.特定的组件包括：
+​        -@Component：基本注解，表示了一个受Spring管理的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spring学习日记一 | Jan&#39;s blogs</title>
+    <title>Spring Diary2 | Jan&#39;s blogs</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,12 +305,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring学习日记一</h1>
+                    <h1 class="description center-align post-title">Spring Diary2</h1>
                 </div>
             </div>
         </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/spring/" class="post-category">
-                                spring
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -474,14 +474,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    191
+                    839
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -497,19 +497,88 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Spring学习"><a href="#Spring学习" class="headerlink" title="Spring学习"></a>Spring学习</h1><p>由于个人因素spring刚开始的学习没有记录到博客上，只能从这节开始记录</p>
-<h2 id="一-Spring介绍"><a href="#一-Spring介绍" class="headerlink" title="一.Spring介绍"></a>一.Spring介绍</h2><p>1.Spring是一个开源框架。</p>
-<p>2.Spring为简化企业级应用开发而生。使用Spring可以使简单的JavaBean实现以前只有EJB才能实现的功能。</p>
-<p>3.Spring是一个IOC（DI）和AOP容器框架</p>
-<p>特点：</p>
-<p>​    -轻量级</p>
-<p>​    -依赖注入（DI）</p>
-<p>​    -面向切面编程（AOP）</p>
-<p>​    -容器</p>
-<p>​    -框架</p>
-<p>​    -一站式</p>
-<p><img src="/2020/02/07/spring-xue-xi-ri-ji-yi/arch1.png" alt="图片1"></p>
-<h2 id="二-Spring学习来源"><a href="#二-Spring学习来源" class="headerlink" title="二.Spring学习来源"></a>二.Spring学习来源</h2><p>​        博主的学习资料来自于一个叫做<strong>代码基基</strong>的UP主，视频链接<u><a href="https://www.bilibili.com/video/av59570922" target="_blank" rel="noopener">点击这里</a></u>。这里已经得到了UP主的授权，视频一共36节，辅助学习地方用到了w3cschool的教程，希望对大家有所帮助！</p>
+                <h1 id="通过注解配置Bean"><a href="#通过注解配置Bean" class="headerlink" title="通过注解配置Bean"></a>通过注解配置Bean</h1><h2 id="1-在classpath中扫描组件"><a href="#1-在classpath中扫描组件" class="headerlink" title="1.在classpath中扫描组件"></a>1.在classpath中扫描组件</h2><p>1.Spring能从classpath下自动扫描，侦测和实例化具有特定注解的组件</p>
+<p>2.特定的组件包括：</p>
+<p>​        -@Component：基本注解，表示了一个受Spring管理的组件</p>
+<p>​        -@Respository：标识持久层的组件</p>
+<p>​        -@Service：标识服务层的组件</p>
+<p>​        -@Controller：标识表现层的组件</p>
+<p>3.命名规则：使用非限定类名，第一个字母小写。也可以在注解中通过value属性值表示组件名称</p>
+<p>4.在组件类上使用特定注解之后需要在配置文件中声明<code>&lt;context:component-scan&gt;</code>这个命名空间。</p>
+<p>5.用resource-pattern属性扫描指定的包</p>
+<p>6.用content:exclude-filter子节点的expression可以排除表达式指定的不需要扫描的组件，用content:include-filter子节点的expression可以排除表达式指定的不需要扫描的组件，但是需要父节点的use-default-filters属性为false，可以修改type的值来改变包含或者不包含实现类的</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/context<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!--    指定SpringIOC容器扫描的包--></span>
+    <span class="token comment" spellcheck="true">&lt;!--    用resource-pattern属性扫描指定的包--></span>
+    <span class="token comment" spellcheck="true">&lt;!--    用content:exclude-filter子节点的expression可以排除表达式指定的不需要扫描的组件--></span>
+    <span class="token comment" spellcheck="true">&lt;!--    用content:include-filter子节点的expression可以排除表达式指定的不需要扫描的组件,但是需要父节点的use-default-filters属性为false--></span>
+    <span class="token comment" spellcheck="true">&lt;!--    可以修改type的值来改变包含或者不包含实现类的--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.spring.annotation<span class="token punctuation">"</span></span> <span class="token attr-name">use-default-filters</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!--        &lt;context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>include-filter</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>annotation<span class="token punctuation">"</span></span> <span class="token attr-name">expression</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.springframework.stereotype.Repository<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">context:</span>component-scan</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span></code></pre>
+<p>这是一份较为简单且完整的spring配置文件的配置，我把这次学习所建的类存放在com.spring.annotation下。</p>
+<h2 id="2-通过注解建立Bean之间的关联关系"><a href="#2-通过注解建立Bean之间的关联关系" class="headerlink" title="2.通过注解建立Bean之间的关联关系"></a>2.通过注解建立Bean之间的关联关系</h2><p>1.当Bean之间存在关联关系的时候，在没有注解的情况下无法调用关联的Bean。</p>
+<p>建立下列Bean关系作实例</p>
+<pre class=" language-java"><code class="language-java">`UserService<span class="token punctuation">.</span>java`
+
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserRepository userRepository<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserService add..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java">`UserRepositoryImpl<span class="token punctuation">.</span>java`
+
+<span class="token annotation punctuation">@Repository</span><span class="token punctuation">(</span><span class="token string">"UserRepository"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserRepositoryImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserRepository</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserRepositoryImpl save"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java">`UserController`
+
+<span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserService userService<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserController execute"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        userService<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>spring 配置文件</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/context<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.spring.annotation<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">context:</span>component-scan</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span></code></pre>
+<p>2.在构造器、普通字段、一切具有参数的方法都可以使用@Autowired注解，这样spring在构造的时候就会自动构造这个注解所表示的代码。</p>
+<p>3.Autowired装载的属性必须在spring里注解，否则会抛异常，如果想让它不存在可以将required设置为false。</p>
+<h2 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h2><p>​        这一节的学习就到这，代码我会上传到我的<a href="https://github.com/dongdongdontforget" target="_blank" rel="noopener">github</a>上，学会了写博客学习就停不下来了。</p>
+<p>​        </p>
 
             </div>
             <hr/>
@@ -535,7 +604,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://localhost:4000/2020/02/07/spring-xue-xi-ri-ji-yi/">http://localhost:4000/2020/02/07/spring-xue-xi-ri-ji-yi/</a>
+                    <a href="http://localhost:4000/2020/02/07/spring-diary2/">http://localhost:4000/2020/02/07/spring-diary2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -748,43 +817,58 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/07/test/">
+                <a href="/2020/02/07/spring-diary2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Spring Diary2">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">Spring Diary2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
+                            通过注解配置Bean1.在classpath中扫描组件1.Spring能从classpath下自动扫描，侦测和实例化具有特定注解的组件
+2.特定的组件包括：
+​        -@Component：基本注解，表示了一个受Spring管理的
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Mr. jan
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/test/">
-                        <span class="chip bg-color">test</span>
+                    <a href="/tags/spring/">
+                        <span class="chip bg-color">spring</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AF%92%E5%81%87/">
+                        <span class="chip bg-color">寒假</span>
                     </a>
                     
                 </div>
@@ -798,29 +882,35 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/06/my-firsy-blog/">
+                <a href="/2020/02/07/spring-diary1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="My firsy blog">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Spring diary1">
                         
-                        <span class="card-title">My firsy blog</span>
+                        <span class="card-title">Spring diary1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            经过不懈的努力 终于把网站搭建成功并发表了第一篇blog，从今天开始我和璐璐每天的学习都会在这里记录下来，加油！2020！
+                            
+Spring学习由于个人因素spring刚开始的学习没有记录到博客上，只能从这节开始记录
+一.Spring介绍​        Spring4.0是 Spring 推出的一个重大版本升级，进一步加强了 Spring 作为 Java 领域第
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Mr. jan
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -828,8 +918,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%94%9F%E6%B4%BB/">
-                        <span class="chip bg-color">生活</span>
+                    <a href="/tags/spring/">
+                        <span class="chip bg-color">spring</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AF%92%E5%81%87/">
+                        <span class="chip bg-color">寒假</span>
                     </a>
                     
                 </div>
@@ -980,7 +1078,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">537</span>&nbsp;字
+                class="white-color">1.2k</span>&nbsp;字
             
             
             
@@ -1004,13 +1102,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/dongdongdontforget" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:1076190199@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1020,11 +1118,15 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1076190199" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1076190199" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 
 
+
+    <a href="https://weibo.com/u/5631469666/home" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/u/5631469666/home" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
 
 
 
