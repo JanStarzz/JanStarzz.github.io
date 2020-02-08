@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring Diary2, Life, study, share, communication">
-    <meta name="description" content="通过注解配置Bean1.在classpath中扫描组件1.Spring能从classpath下自动扫描，侦测和实例化具有特定注解的组件
-2.特定的组件包括：
-​        -@Component：基本注解，表示了一个受Spring管理的">
+    <meta name="keywords" content="对寒假前半段时间的总结, Life, study, share, communication">
+    <meta name="description" content="​        寒假的时间已经过去将近一半了，这个寒假前期因为一些家事奔波于老家和山东之间，也不知道这个新冠病毒会发展的如此迅速，导致这个寒假的所有计划都打乱了。好多人没见，好多事干不成，真的是太难过了。
+​        学习方面的话首">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spring Diary2 | Jan&#39;s blogs</title>
+    <title>对寒假前半段时间的总结 | Jan&#39;s blogs</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring Diary2</h1>
+                    <h1 class="description center-align post-title">对寒假前半段时间的总结</h1>
                 </div>
             </div>
         </div>
@@ -427,16 +426,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/spring/">
-                                <span class="chip bg-color">spring</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">学习</span>
+                            <a href="/tags/%E7%94%9F%E6%B4%BB/">
+                                <span class="chip bg-color">生活</span>
                             </a>
                         
                             <a href="/tags/%E5%AF%92%E5%81%87/">
                                 <span class="chip bg-color">寒假</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%80%BB%E7%BB%93/">
+                                <span class="chip bg-color">总结</span>
                             </a>
                         
                     </div>
@@ -447,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java/" class="post-category">
-                                Java
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                生活
                             </a>
                         
                     </div>
@@ -460,28 +459,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-07
+                    2020-02-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-07
+                    2020-02-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    839
+                    307
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -497,88 +496,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="通过注解配置Bean"><a href="#通过注解配置Bean" class="headerlink" title="通过注解配置Bean"></a>通过注解配置Bean</h1><h2 id="1-在classpath中扫描组件"><a href="#1-在classpath中扫描组件" class="headerlink" title="1.在classpath中扫描组件"></a>1.在classpath中扫描组件</h2><p>1.Spring能从classpath下自动扫描，侦测和实例化具有特定注解的组件</p>
-<p>2.特定的组件包括：</p>
-<p>​        -@Component：基本注解，表示了一个受Spring管理的组件</p>
-<p>​        -@Respository：标识持久层的组件</p>
-<p>​        -@Service：标识服务层的组件</p>
-<p>​        -@Controller：标识表现层的组件</p>
-<p>3.命名规则：使用非限定类名，第一个字母小写。也可以在注解中通过value属性值表示组件名称</p>
-<p>4.在组件类上使用特定注解之后需要在配置文件中声明<code>&lt;context:component-scan&gt;</code>这个命名空间。</p>
-<p>5.用resource-pattern属性扫描指定的包</p>
-<p>6.用content:exclude-filter子节点的expression可以排除表达式指定的不需要扫描的组件，用content:include-filter子节点的expression可以排除表达式指定的不需要扫描的组件，但是需要父节点的use-default-filters属性为false，可以修改type的值来改变包含或者不包含实现类的</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/context<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>
-         http://www.springframework.org/schema/beans
-         http://www.springframework.org/schema/beans/spring-beans.xsd
-         http://www.springframework.org/schema/context
-         http://www.springframework.org/schema/context/spring-context.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token comment" spellcheck="true">&lt;!--    指定SpringIOC容器扫描的包--></span>
-    <span class="token comment" spellcheck="true">&lt;!--    用resource-pattern属性扫描指定的包--></span>
-    <span class="token comment" spellcheck="true">&lt;!--    用content:exclude-filter子节点的expression可以排除表达式指定的不需要扫描的组件--></span>
-    <span class="token comment" spellcheck="true">&lt;!--    用content:include-filter子节点的expression可以排除表达式指定的不需要扫描的组件,但是需要父节点的use-default-filters属性为false--></span>
-    <span class="token comment" spellcheck="true">&lt;!--    可以修改type的值来改变包含或者不包含实现类的--></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.spring.annotation<span class="token punctuation">"</span></span> <span class="token attr-name">use-default-filters</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token comment" spellcheck="true">&lt;!--        &lt;context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>include-filter</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>annotation<span class="token punctuation">"</span></span> <span class="token attr-name">expression</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.springframework.stereotype.Repository<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">context:</span>component-scan</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span></code></pre>
-<p>这是一份较为简单且完整的spring配置文件的配置，我把这次学习所建的类存放在com.spring.annotation下。</p>
-<h2 id="2-通过注解建立Bean之间的关联关系"><a href="#2-通过注解建立Bean之间的关联关系" class="headerlink" title="2.通过注解建立Bean之间的关联关系"></a>2.通过注解建立Bean之间的关联关系</h2><p>1.当Bean之间存在关联关系的时候，在没有注解的情况下无法调用关联的Bean。</p>
-<p>建立下列Bean关系作实例</p>
-<pre class=" language-java"><code class="language-java">`UserService<span class="token punctuation">.</span>java`
-
-<span class="token annotation punctuation">@Service</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> UserRepository userRepository<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserService add..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<pre class=" language-java"><code class="language-java">`UserRepositoryImpl<span class="token punctuation">.</span>java`
-
-<span class="token annotation punctuation">@Repository</span><span class="token punctuation">(</span><span class="token string">"UserRepository"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserRepositoryImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserRepository</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserRepositoryImpl save"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<pre class=" language-java"><code class="language-java">`UserController`
-
-<span class="token annotation punctuation">@Controller</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> UserService userService<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserController execute"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        userService<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>spring 配置文件</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/context<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>
-         http://www.springframework.org/schema/beans
-         http://www.springframework.org/schema/beans/spring-beans.xsd
-         http://www.springframework.org/schema/context
-         http://www.springframework.org/schema/context/spring-context.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.spring.annotation<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">context:</span>component-scan</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span></code></pre>
-<p>2.在构造器、普通字段、一切具有参数的方法都可以使用@Autowired注解，这样spring在构造的时候就会自动构造这个注解所表示的代码。</p>
-<p>3.Autowired装载的属性必须在spring里注解，否则会抛异常，如果想让它不存在可以将required设置为false。</p>
-<h2 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h2><p>​        这一节的学习就到这，代码我会上传到我的<a href="https://github.com/dongdongdontforget" target="_blank" rel="noopener">github</a>上，学会了写博客学习就停不下来了。</p>
-<p>​        </p>
+                <p>​        寒假的时间已经过去将近一半了，这个寒假前期因为一些家事奔波于老家和山东之间，也不知道这个<strong><em>新冠病毒</em></strong>会发展的如此迅速，导致这个寒假的所有计划都打乱了。好多人没见，好多事干不成，真的是太难过了。</p>
+<p>​        学习方面的话首先把<strong>Spring</strong>的基础部分差不多整完了，虽然学习量不是很大，但是比以前寒假从来没有学习过要好很多了，希望在接下来的很长一段时间内能够学习到更多 的东西。发现现阶段学<strong>Spring</strong>还有些吃力，比如开发的架构还有一些基础不是很好，所以打算在此先告一段落了，从一些简单的开始学习，下午制定一下学习路线开始新的学习计划。</p>
+<p>​        <strong>璐璐宝贝</strong>这个寒假好像只见了两次，时间还不长，好像对我感到了很不满，虽然这原因不在我的身上但是我还是道个歉，希望疫情赶紧过去。<img src="/2020/02/08/dui-han-jia-qian-ban-duan-shi-jian-de-zong-jie/d.jpg" alt></p>
+<p>组织一次完美的旅行，来弥补这三个月没见的遗憾。</p>
 
             </div>
             <hr/>
@@ -604,7 +525,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://localhost:4000/2020/02/07/spring-diary2/">http://localhost:4000/2020/02/07/spring-diary2/</a>
+                    <a href="http://localhost:4000/2020/02/08/dui-han-jia-qian-ban-duan-shi-jian-de-zong-jie/">http://localhost:4000/2020/02/08/dui-han-jia-qian-ban-duan-shi-jian-de-zong-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -642,16 +563,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/spring/">
-                                    <span class="chip bg-color">spring</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">学习</span>
+                                <a href="/tags/%E7%94%9F%E6%B4%BB/">
+                                    <span class="chip bg-color">生活</span>
                                 </a>
                             
                                 <a href="/tags/%E5%AF%92%E5%81%87/">
                                     <span class="chip bg-color">寒假</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%80%BB%E7%BB%93/">
+                                    <span class="chip bg-color">总结</span>
                                 </a>
                             
                         </div>
@@ -1084,20 +1005,23 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/08/dui-han-jia-qian-ban-duan-shi-jian-de-zong-jie/">
+                <a href="/2020/02/08/mysql-diary1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="对寒假前半段时间的总结">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="MySQL Diary1">
                         
-                        <span class="card-title">对寒假前半段时间的总结</span>
+                        <span class="card-title">MySQL Diary1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ​        寒假的时间已经过去将近一半了，这个寒假前期因为一些家事奔波于老家和山东之间，也不知道这个新冠病毒会发展的如此迅速，导致这个寒假的所有计划都打乱了。好多人没见，好多事干不成，真的是太难过了。
-​        学习方面的话首
+                            MySQL Day11.学习数据库的原因保存在内存的数据易失，保存在文件中不方便查询。
+保存在数据库中的原因:
+1.实现数据的持久化。
+2.使用完整的管理系统统一管理，易于查询。
+2.数据库的相关概念DB:数据库（database），存储数
                         
                     </div>
                     <div class="publish-info">
@@ -1108,8 +1032,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -1119,16 +1043,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%94%9F%E6%B4%BB/">
-                        <span class="chip bg-color">生活</span>
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">学习</span>
                     </a>
                     
                     <a href="/tags/%E5%AF%92%E5%81%87/">
                         <span class="chip bg-color">寒假</span>
                     </a>
                     
-                    <a href="/tags/%E6%80%BB%E7%BB%93/">
-                        <span class="chip bg-color">总结</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1142,21 +1070,21 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/07/spring-diary1/">
+                <a href="/2020/02/07/spring-diary2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Spring diary1">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Spring Diary2">
                         
-                        <span class="card-title">Spring diary1</span>
+                        <span class="card-title">Spring Diary2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-Spring学习由于个人因素spring刚开始的学习没有记录到博客上，只能从这节开始记录
-一.Spring介绍​        Spring4.0是 Spring 推出的一个重大版本升级，进一步加强了 Spring 作为 Java 领域第
+                            通过注解配置Bean1.在classpath中扫描组件1.Spring能从classpath下自动扫描，侦测和实例化具有特定注解的组件
+2.特定的组件包括：
+​        -@Component：基本注解，表示了一个受Spring管理的
                         
                     </div>
                     <div class="publish-info">
