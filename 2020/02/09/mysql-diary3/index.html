@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL Diary2, Life, study, share, communication">
-    <meta name="description" content="MySQL Dairy2一、基础查询&amp;emsp;&amp;emsp;语法：SELECT 查询列表 FROM 表名
-&amp;emsp;&amp;emsp;特点：①查询列表可以是表中字段、常量值、表达式、函数
-  &amp;emsp;&amp;emsp;  ②查询的结果是一个虚拟的">
+    <meta name="keywords" content="MySQL Diary3, Life, study, share, communication">
+    <meta name="description" content="MySQL Diary3一、排序查询语法：SEKECT 查询列表 FROM 表 【WHERE 筛选条件】ORDER BY 【asc|desc】
+例：查询员工信息，要求工资从高到低排序
+SELECT * FROM enployees ORDE">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MySQL Diary2 | Jan&#39;s blogs</title>
+    <title>MySQL Diary3 | Jan&#39;s blogs</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,12 +305,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MySQL Diary2</h1>
+                    <h1 class="description center-align post-title">MySQL Diary3</h1>
                 </div>
             </div>
         </div>
@@ -464,21 +464,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-08
+                    2020-02-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-08
+                    2020-02-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.1k
                 </div>
                 
 
@@ -501,73 +501,96 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MySQL-Dairy2"><a href="#MySQL-Dairy2" class="headerlink" title="MySQL Dairy2"></a>MySQL Dairy2</h1><h2 id="一、基础查询"><a href="#一、基础查询" class="headerlink" title="一、基础查询"></a>一、基础查询</h2><p>&emsp;&emsp;语法：<code>SELECT 查询列表 FROM 表名</code></p>
-<p>&emsp;&emsp;特点：①查询列表可以是表中字段、常量值、表达式、函数</p>
-<p>  &emsp;&emsp;  ②查询的结果是一个虚拟的表格</p>
-<h3 id="1-查询表中的字段"><a href="#1-查询表中的字段" class="headerlink" title="1.查询表中的字段"></a>1.查询表中的字段</h3><p>&emsp;&emsp;查询表中的字段可以是单个也可以是多个，多个中间用逗号隔开</p>
-<p>&emsp;&emsp;例：查询employees表中的last_name项</p>
-<p>&emsp;&emsp;<code>SELECT last_name FROM employees;</code></p>
-<p>&emsp;&emsp;例：查询employees表中的first_name和last_name项</p>
-<p>&emsp;&emsp;<code>SELECT last_name, first_name FROM employees;</code></p>
-<p>&emsp;&emsp;例：查询employees表中的所有字段</p>
-<p>&emsp;&emsp;<code>SELECT * FROM employees;</code></p>
-<h3 id="2-查询常量值"><a href="#2-查询常量值" class="headerlink" title="2.查询常量值"></a>2.查询常量值</h3><p>&emsp;&emsp;可以是数字也可以是字符串</p>
-<p>&emsp;&emsp;例：查询常量100</p>
-<p>&emsp;&emsp;<code>SELECT 100;</code></p>
-<p>&emsp;&emsp;例：查询常量abc</p>
-<p>&emsp;&emsp;<code>SELECT &#39;abc&#39;;</code></p>
-<h3 id="3-查询常量表达式"><a href="#3-查询常量表达式" class="headerlink" title="3.查询常量表达式"></a>3.查询常量表达式</h3><p>&emsp;&emsp;可以查询数学表达式</p>
-<p>&emsp;&emsp;例：查询100*98</p>
-<p>&emsp;&emsp;<code>SELECT 100*98;</code></p>
-<h3 id="4-查询函数"><a href="#4-查询函数" class="headerlink" title="4.查询函数"></a>4.查询函数</h3><p>&emsp;&emsp;例：查询版本号</p>
-<p>&emsp;&emsp;<code>SELECT VERSION();</code></p>
-<h3 id="5-起别名"><a href="#5-起别名" class="headerlink" title="5.起别名"></a>5.起别名</h3><p>&emsp;&emsp;使用AS关键字能给查询的字段起别名</p>
-<p>&emsp;&emsp;例：查询employees中的last_name并改名为姓名</p>
-<p>&emsp;&emsp;<code>SELECT last_name AS 姓名 FROM employees;</code></p>
-<p>&emsp;&emsp;例：查询100*98 改名为结果</p>
-<p>&emsp;&emsp;<code>SELECT 100*98 AS 结果;</code></p>
-<h4 id="6-去重"><a href="#6-去重" class="headerlink" title="6.去重"></a>6.去重</h4><p>&emsp;&emsp;使用DISTINCT 关键字去重</p>
-<p>&emsp;&emsp;例：查询employees中涉及到的所有部门编号</p>
-<p>&emsp;&emsp;<code>SELECT DISTINCT dapartment_id FROM employees;</code></p>
-<h3 id="7-号的作用"><a href="#7-号的作用" class="headerlink" title="7. +号的作用"></a>7. +号的作用</h3><p>&emsp;&emsp;+号只有运算符的作用</p>
-<p>&emsp;&emsp;1.两个操作数都为数值型，则做加法运算。</p>
-<p>&emsp;&emsp;例：<code>SELECT 100+900;</code></p>
-<p>&emsp;&emsp;2.其中一个为字符型，则试图将字符型型数值转化为数值型，如果转化成功则继续做加法运算,如果失败则会将字符型数值转化为0。</p>
-<p>&emsp;&emsp;例：<code>SELECT &#39;123&#39;+90 -&gt;SELECT 213;</code></p>
-<p>&emsp;&emsp;<code>SELECT &#39;abc&#39;+90 -&gt; SELECT 90;</code></p>
-<p>&emsp;&emsp;3.如果两边任意一边null，则结果为null</p>
-<p>&emsp;&emsp;4.字符串拼接用CONCAT()函数</p>
-<p>&emsp;&emsp;例：从employees表中选择last_name和first_name ，并拼接</p>
-<p>&emsp;&emsp;<code>SELECT CONCAT(last_name, first_name) AS 姓名 FROM employees;</code></p>
-<h2 id="二、条件查询"><a href="#二、条件查询" class="headerlink" title="二、条件查询"></a>二、条件查询</h2><p>&emsp;&emsp;语法：<code>SELECT 查询列表 FROM 表名 WHERE 筛选条件;</code></p>
-<h3 id="1-按条件表达式筛选"><a href="#1-按条件表达式筛选" class="headerlink" title="1.按条件表达式筛选"></a>1.按条件表达式筛选</h3><p>&emsp;&emsp;条件运算符：&gt;, &lt;, =, !=, &lt;&gt;, &gt;=, &lt;=</p>
-<p>&emsp;&emsp;例：查询工资大于12000的员工信息</p>
-<p>&emsp;&emsp;<code>SELECT * FROM employees WHERE salary&gt;12000;</code></p>
-<p>&emsp;&emsp;例： 查询编号不等于90的员工信息</p>
-<p>&emsp;&emsp;<code>SELECT * FROM employees WHRER department_id&lt;&gt;90;</code></p>
-<h3 id="2-按逻辑表达式筛选"><a href="#2-按逻辑表达式筛选" class="headerlink" title="2.按逻辑表达式筛选"></a>2.按逻辑表达式筛选</h3><p>&emsp;&emsp;逻辑运算符：&amp;&amp;,||,!(and, or, not)</p>
-<p>&emsp;&emsp;例：查询工资大于12000且小于20000的员工信息</p>
-<p>&emsp;&emsp;<code>SELECT * FROM employees WHERE salary&lt;20000 and salary&gt;12000;</code></p>
-<p>&emsp;&emsp;例：查询员工工资大于20000或者小于5000的员工信息</p>
-<p>&emsp;&emsp;<code>SELECT * FROM employess WHERE salary&lt;5000 or salary&gt;20000;</code></p>
-<h3 id="3-模糊查询"><a href="#3-模糊查询" class="headerlink" title="3.模糊查询"></a>3.模糊查询</h3><p>&emsp;&emsp;条件运算符：like，between and， in， is null||is not null</p>
-<h4 id="emsp-emsp-3-1-like"><a href="#emsp-emsp-3-1-like" class="headerlink" title="&emsp;&emsp;3.1 like"></a>&emsp;&emsp;3.1 like</h4><p>&emsp;&emsp;&emsp;&emsp;例：查询员工名中包含字符a的员工信息</p>
-<p>&emsp;&emsp;&emsp;&emsp;<code>SELECT * FROM employees WHERE last_name LIKE &#39;%a%;&#39;</code></p>
-<p>&emsp;&emsp;&emsp;&emsp;通配符：</p>
-<p>&emsp;&emsp;&emsp;&emsp;① % ：匹配0个或任意个字符</p>
-<p>&emsp;&emsp;&emsp;&emsp;② _ : 匹配单个运算符</p>
-<p>&emsp;&emsp;&emsp;&emsp;例：查询员工姓名第三个字符为a，第五个字符为e的员工名</p>
-<p>&emsp;&emsp;&emsp;&emsp;<code>SELECT last_name FROM employees WHERE last_name LIKE &#39;__a_e%;&#39;</code></p>
-<h4 id="emsp-emsp-3-2-between-and"><a href="#emsp-emsp-3-2-between-and" class="headerlink" title="&emsp;&emsp;3.2 between and"></a>&emsp;&emsp;3.2 between and</h4><p>&emsp;&emsp;&emsp;&emsp;例：查询员工编号在100到120之间的员工信息</p>
-<p>&emsp;&emsp;&emsp;&emsp;<code>SELECT * FROM employees WHERE employees BETWEEN 100 AND 120;</code></p>
-<p>&emsp;&emsp;&emsp;&emsp;① 前后条件不允许颠倒</p>
-<p>&emsp;&emsp;&emsp;&emsp;② 包含两个临界值</p>
-<h4 id="emsp-emsp-3-3-in"><a href="#emsp-emsp-3-3-in" class="headerlink" title="&emsp;&emsp;3.3 in"></a>&emsp;&emsp;3.3 in</h4><p>&emsp;&emsp;&emsp;&emsp;例：查询员工公众编号IT_PROG、AD_VP的以一个员工名和工种编号</p>
-<p>&emsp;&emsp;&emsp;&emsp;<code>SELECT last_name,job_id FROM employees WHERE IN(&#39;IT_PROG、AD_VP&#39;);</code></p>
-<h4 id="emsp-emsp-3-4-is-null-is-not-null"><a href="#emsp-emsp-3-4-is-null-is-not-null" class="headerlink" title="&emsp;&emsp;3.4 is null/is not null"></a>&emsp;&emsp;3.4 is null/is not null</h4><p>&emsp;&emsp;&emsp;&emsp;例：查询没有奖金的员工名和奖金率</p>
-<p>&emsp;&emsp;&emsp;&emsp;<code>SELECT last_name, commission_pct FROM employees WHERE commission_pct IS NULL;</code></p>
-<h4 id="emsp-emsp-3-5-安全等于-lt-gt"><a href="#emsp-emsp-3-5-安全等于-lt-gt" class="headerlink" title="&emsp;&emsp;3.5 安全等于&lt;=&gt;"></a>&emsp;&emsp;3.5 安全等于&lt;=&gt;</h4><p>&emsp;&emsp;&emsp;&emsp;例：查询没有奖金的员工名和奖金率</p>
-<p>&emsp;&emsp;&emsp;&emsp;<code>SELECT last_name, commission_pct FROM employees WHERE commission_pct &lt;=&gt; NULL;</code></p>
+                <h1 id="MySQL-Diary3"><a href="#MySQL-Diary3" class="headerlink" title="MySQL Diary3"></a>MySQL Diary3</h1><h2 id="一、排序查询"><a href="#一、排序查询" class="headerlink" title="一、排序查询"></a>一、排序查询</h2><p>语法：<code>SEKECT 查询列表 FROM 表 【WHERE 筛选条件】ORDER BY 【asc|desc】</code></p>
+<p>例：查询员工信息，要求工资从高到低排序</p>
+<p><code>SELECT * FROM enployees ORDER BY salary DESC;</code></p>
+<p>例：查询部门编号大于等于90的员工信息，按入职时间先后将进行排序</p>
+<p><code>SELECT * FROM employees WHERE department_id&gt;=90 ORDER BY hiredate ASC;</code></p>
+<p>例：按年薪的高低显示员工的信息</p>
+<p><code>SELECT *, salary*12*(1+ifnull(commission+_pct,0)) ORDER BY salary*12*(1+ifnull(commission+_pct,0)) DESC;</code></p>
+<p><code>SELECT *, salary*12*(1+ifnull(commission+_pct,0)) AS 年薪ORDER BY 年薪 DESC;</code></p>
+<p>例: 查询员工信息，要求先按工资排序，再按员工编号查询</p>
+<p><code>SELECT * FROM employess ORDER BY salary ASC, employee_id DESC;</code></p>
+<p>特点：① asc代表升序，的说辞代表的是降序，不写默认升序</p>
+<p>&emsp;&emsp;&emsp;② 可以用别名进行排序</p>
+<p>&emsp;&emsp;&emsp;③ 可以按表达式、函数、单个字段、多个字段</p>
+<p>&emsp;&emsp;&emsp;④ 一般放到查询语句最后，limit语句除外</p>
+<h2 id="二、常见函数"><a href="#二、常见函数" class="headerlink" title="二、常见函数"></a>二、常见函数</h2><p>概念：将一组逻辑语句封装在方法体中，对外暴露方法名。</p>
+<p>好处： 1.隐藏实现细节  2.提高代码的重用性</p>
+<p>调用： <code>SELECT 函数名(实参列表) 【FROM 表】;</code></p>
+<h3 id="1-单行函数"><a href="#1-单行函数" class="headerlink" title="1.单行函数"></a>1.单行函数</h3><h4 id="1-1-字符函数"><a href="#1-1-字符函数" class="headerlink" title="1.1 字符函数"></a>1.1 字符函数</h4><p>① LENGTH：获取参数值的字节长度</p>
+<p>例：<code>SELECT LENGTH(&#39;john&#39;);</code></p>
+<p>②CONCAT：连接两个字符串</p>
+<p>例：<code>SELECT CONCAT(&#39;john&#39;,&#39;love&#39;);</code></p>
+<p>例：<code>SELECT CONCAT(last_name, &#39;,&#39;, first_name) AS 姓名 FROM employees</code></p>
+<p>③ UPPER、LOWER：将字符参数转化为大写、小写</p>
+<p>例：将姓变成大写，名变成小写<code>SELECT CONCAT(UPPER(last_name),LOWER(first_name)) FROM employees;</code></p>
+<p>④ substr、substring；删除字符串</p>
+<p>例：<code>SELECT SUBSTR(&#39;LULOVELU&#39;,6); #截取索引6以后的所有字符 ELU;</code></p>
+<p>例：<code>SELECT SUBSTR(&#39;LULOVELU&#39;,3,4); #截取索引3开始的4个字符LOVE</code></p>
+<p>⑤ INSTR：返回子串第一次出现的索引</p>
+<p>例：<code>SELECT INSTR(&#39;我爱你杨璐璐&#39;,&#39;杨璐璐&#39;); #4</code></p>
+<p>⑥ TRIM：去除空格</p>
+<p>例：<code>SELECT TRIM(&#39;     LULU      &#39;); # LULU</code></p>
+<p>例：<code>SELECT TRIM(&#39;a&#39; FROM &#39;aaaaaaLULUaaaaa&#39;); #LULU</code></p>
+<p>⑦ LPAD/RPAD：用指定的字符左/右填充指定长度</p>
+<p>例：<code>SELECT LPAD(&#39;LULU&#39;,10,&#39;*&#39;); #******LULU</code></p>
+<p>⑨ REPLACE：替换</p>
+<p>例：<code>SELECT REPLACE(&#39;LULULULU&#39;,&#39;LU&#39;,&#39;DONG&#39;); #DONGDONGDONGDONG</code></p>
+<h4 id="1-2-数学函数"><a href="#1-2-数学函数" class="headerlink" title="1.2 数学函数"></a>1.2 数学函数</h4><p>① ROUND：四舍五入,默认保留整数</p>
+<p>例：<code>SELECT ROUND(1.55); # 2.0</code></p>
+<p>例：<code>SELECT ROUNT(1.55,2); #1.6</code></p>
+<p>② CEIL： 向上取整</p>
+<p>例：<code>SELECT CEIL(1.02); # 2</code></p>
+<p>④ FLOOR：向下取整</p>
+<p>例：<code>SELECT FLOOR(1.01); # 1</code></p>
+<p>⑤ TRUNCATE：截断</p>
+<p>例：<code>SELECT TRUNCATE(1.69999,1); #1.6</code></p>
+<p>⑥ MOD：取余</p>
+<p>例：<code>SELECT MOD(10, 3); # 1 相当于SELECT 10%3</code></p>
+<h4 id="1-3-日期函数"><a href="#1-3-日期函数" class="headerlink" title="1.3 日期函数"></a>1.3 日期函数</h4><p>① NOW：返回当前系统日期+时间</p>
+<p>例：<code>SELECT NOW(); # YYYY-MM-DD HH:MM:SS</code></p>
+<p>② CURDATE：只返回当前的系统日期</p>
+<p>例：<code>SELECT CURDATE(); # YYYY-MM-DD</code></p>
+<p>③ CRUTIEM：只返回当前的系统时间</p>
+<p>例：<code>SEKECT CURTIME(); # HH:MM:SS</code></p>
+<p>④ YEAR，MONTH，DAY：返回日期类型的对应。</p>
+<p>⑤str_to_date: 将日期格式的字符转换成指定格式的日期</p>
+<p>例：<code>SELECT STR_TO_DATE(&#39;1998-3-2&#39;,&#39;%Y-%c-%d&#39;)</code></p>
+<p><img src="/2020/02/09/mysql-diary3/%E6%A0%BC%E5%BC%8F.png" alt="格式表"></p>
+<p>⑥ date_format：将日期转换为字符</p>
+<p>例：<code>SELECT DATE_FORMAT(NOW(),&#39;%y年%m每月%d日&#39;);</code></p>
+<h4 id="1-4-其他函数"><a href="#1-4-其他函数" class="headerlink" title="1.4 其他函数"></a>1.4 其他函数</h4><p>① VERSION：版本</p>
+<p>② DATABASE：当前的数据库</p>
+<p>③ USER： 当前用户</p>
+<h4 id="1-5-流程控制函数"><a href="#1-5-流程控制函数" class="headerlink" title="1.5 流程控制函数"></a>1.5 流程控制函数</h4><p>① IF ：判断</p>
+<p>例：<code>SELECT IF(commission_pct IS NULL, &quot;没奖金&quot;, &quot;有奖金&quot;);</code></p>
+<p>② CASE：流程控制</p>
+<p>语法 ：</p>
+<pre class=" language-mysql"><code class="language-mysql">case 要判断的字段或表达式
+when 常量1 then 要显示的值1或语句1;
+when 常量2 then 要显示的值2或语句2；
+...
+else 要显示的默认值或默认表达式;
+end;
+</code></pre>
+<h3 id="2-分组函数"><a href="#2-分组函数" class="headerlink" title="2.分组函数"></a>2.分组函数</h3><p>功能：用作统计使用，又称为聚合函数或统计函数或组函数。</p>
+<p>分类：sum，avg，max，min，count</p>
+<h4 id="2-1-简单的使用"><a href="#2-1-简单的使用" class="headerlink" title="2.1  简单的使用"></a>2.1  简单的使用</h4><pre class=" language-mysql"><code class="language-mysql">SELECT SUM(salary) FROM employees;
+SELECT AVG(salary) FROM employees;
+SELECT MIN(salary) FROM employees;
+SELECT MAX(salary) FROM employees;
+SELECT COUNT(salary) FROM employees;
+
+SELECT SUM(salary) AS 总值,AVG(salary) AS 平均值 FROM employees;</code></pre>
+<h4 id="2-2-参数支持的类型"><a href="#2-2-参数支持的类型" class="headerlink" title="2.2 参数支持的类型"></a>2.2 参数支持的类型</h4><p>① sum、avg一般处理数值型，min、max、count都支持</p>
+<p>② sum、avg、min、max、count都忽略了NULL值，</p>
+<h4 id="2-3-可以和distinct搭配"><a href="#2-3-可以和distinct搭配" class="headerlink" title="2.3 可以和distinct搭配"></a>2.3 可以和distinct搭配</h4><pre class=" language-mysql"><code class="language-mysql">SELECT SUM(DISTINCT salary),SUM (salary FROM employees);# 去重</code></pre>
+<h4 id="2-4-count函数的详细介绍"><a href="#2-4-count函数的详细介绍" class="headerlink" title="2.4 count函数的详细介绍"></a>2.4 count函数的详细介绍</h4><pre class=" language-mysql"><code class="language-mysql">SELECT COUNT(salary) FROM employees;
+SELECT COUNT(*) FROM employees; # 用于统计数目
+SELECT COUNT(1) FROM employees; # 相当于加了一列常量值统计个数</code></pre>
+<h4 id="2-5-和分组函数一同查询的字段有限制"><a href="#2-5-和分组函数一同查询的字段有限制" class="headerlink" title="2.5 和分组函数一同查询的字段有限制"></a>2.5 和分组函数一同查询的字段有限制</h4><p>和分组查询一同字段要求是group by后的字段</p>
+<p>​             </p>
 
             </div>
             <hr/>
@@ -593,7 +616,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://localhost:4000/2020/02/08/mysql-diary2/">http://localhost:4000/2020/02/08/mysql-diary2/</a>
+                    <a href="http://localhost:4000/2020/02/09/mysql-diary3/">http://localhost:4000/2020/02/09/mysql-diary3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1073,9 +1096,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/09/mysql-diary3/">
                     <div class="card-image">
@@ -1095,9 +1119,9 @@ SELECT * FROM enployees ORDE
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1110,6 +1134,7 @@ SELECT * FROM enployees ORDE
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1140,23 +1165,21 @@ SELECT * FROM enployees ORDE
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/08/mysql-diary1/">
+                <a href="/2020/02/08/mysql-diary2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="MySQL Diary1">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="MySQL Diary2">
                         
-                        <span class="card-title">MySQL Diary1</span>
+                        <span class="card-title">MySQL Diary2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL Diary11.学习数据库的原因保存在内存的数据易失，保存在文件中不方便查询。
-保存在数据库中的原因:
-1.实现数据的持久化。
-2.使用完整的管理系统统一管理，易于查询。
-2.数据库的相关概念DB:数据库（database），存
+                            MySQL Dairy2一、基础查询&emsp;&emsp;语法：SELECT 查询列表 FROM 表名
+&emsp;&emsp;特点：①查询列表可以是表中字段、常量值、表达式、函数
+  &emsp;&emsp;  ②查询的结果是一个虚拟的
                         
                     </div>
                     <div class="publish-info">
