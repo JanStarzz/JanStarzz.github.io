@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL 学习总结, Life, study, share, communication">
-    <meta name="description" content="MySQL 学习总结&amp;emsp;&amp;emsp;经过4天的高效学习，把MySQL的基础基本都掌握了，持续的高效学习让我头晕目眩，真是累呢。
-&amp;emsp;&amp;emsp;要感谢B站UP主代码基基提供的学习资料，B站的链接（点击这里），主要看这里的学习">
+    <meta name="keywords" content="JDBC Diary1, Life, study, share, communication">
+    <meta name="description" content="JDBC Diary1前言：&amp;emsp;&amp;emsp;MySQL学完了，现在该学JDBC了，虽然在课堂上学过，但还是觉得没啥用。MySQL博客写的有些枯燥，这里会做一些改进，把一些出现的问题和其解决方案也一并附上。
+数据持久化&amp;emsp;&amp;e">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MySQL 学习总结 | Jan&#39;s blogs</title>
+    <title>JDBC Diary1 | Jan&#39;s blogs</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MySQL 学习总结</h1>
+                    <h1 class="description center-align post-title">JDBC Diary1</h1>
                 </div>
             </div>
         </div>
@@ -434,16 +434,12 @@
                                 <span class="chip bg-color">寒假</span>
                             </a>
                         
-                            <a href="/tags/%E6%80%BB%E7%BB%93/">
-                                <span class="chip bg-color">总结</span>
-                            </a>
-                        
                             <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
                                 <span class="chip bg-color">数据库</span>
                             </a>
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -454,12 +450,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
-                            </a>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%80%BB%E7%BB%93/" class="post-category">
-                                总结
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -478,14 +470,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-11
+                    2020-02-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    122
+                    425
                 </div>
                 
 
@@ -508,10 +500,190 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MySQL-学习总结"><a href="#MySQL-学习总结" class="headerlink" title="MySQL 学习总结"></a>MySQL 学习总结</h1><p>&emsp;&emsp;经过4天的高效学习，把MySQL的基础基本都掌握了，持续的高效学习让我头晕目眩，真是累呢。</p>
-<p>&emsp;&emsp;要感谢B站UP主<a href="https://space.bilibili.com/444162933?spm_id_from=333.788.b_765f7570696e666f.1" target="_blank" rel="noopener">代码基基</a>提供的学习资料，B站的链接（<a href="https://www.bilibili.com/video/av59623481?p=1" target="_blank" rel="noopener">点击这里</a>），主要看这里的学习，这是一位很有意思的女老师，沉迷于武侠小说，授课风格确实很有意思。</p>
-<p>&emsp;&emsp;这里还有一份UP主提供的 <a href="/download/MYSQL复习宝典.edf" ">MySQL总结</a>，希望有所帮助</p>
-<p>&emsp;&emsp;不说了，开始JDBC的学习吧！</p>
+                <h1 id="JDBC-Diary1"><a href="#JDBC-Diary1" class="headerlink" title="JDBC Diary1"></a>JDBC Diary1</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>&emsp;&emsp;MySQL学完了，现在该学JDBC了，虽然在课堂上学过，但还是觉得没啥用。MySQL博客写的有些枯燥，这里会做一些改进，把一些出现的问题和其解决方案也一并附上。</p>
+<h2 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h2><p>&emsp;&emsp;持久化(persistence)：<strong>把数据保存到可掉电式存储设备中以供之后使用</strong>。大多数情况下，特别是企业级应用，<strong>数据持久化意味着将内存中的数据保存到硬盘上加以”固化”</strong>，而持久化的实现过程大多通过各种<strong>关系数据库</strong>来完成。</p>
+<p>&emsp;&emsp;持久化的主要应用是将内存中的数据存储在关系型数据库中，当然也可以存储在磁盘文件、XML数据文件中。</p>
+<h2 id="JDBC介绍"><a href="#JDBC介绍" class="headerlink" title="JDBC介绍"></a>JDBC介绍</h2><p>&emsp;&emsp;JDBC(Java Database Connectivity)是一个<strong>独立于特定数据库管理系统</strong>、<strong>通用的</strong>SQL数据库存取和操作的公共接口**（一组API），定义了用来访问数据库的标准Java类库，使用这个类库可以以一种标准的方法、方便地访问数据库资源</p>
+<p>&emsp;&emsp;JDBC为访问不同的数据库提供了一种<strong>统一的途径</strong>，为开发者屏蔽了一些细节问题。</p>
+<p>&emsp;&emsp;JDBC的目标是使Java程序员使用JDBC可以连接任何<strong>提供了</strong>JDBC<strong>驱动程序</strong>的数据库系统，这样就使得程序员无需对特定的数据库系统的特点有过多的了解，从而大大简化和加快了开发过程。</p>
+<h2 id="JDBC-API"><a href="#JDBC-API" class="headerlink" title="JDBC API"></a>JDBC API</h2><p><img src="/2020/02/11/jdbc-diary1/JDBCAPI.jpg" alt="JDBC API"></p>
+<h2 id="通过Driver接口获取数据库连接"><a href="#通过Driver接口获取数据库连接" class="headerlink" title="通过Driver接口获取数据库连接"></a>通过Driver接口获取数据库连接</h2><p>这里提供MySQL 的驱动包 <a href="/download/mysql-connector-java-8.0.16.jar" ">mysql8.0</a>，将它放在项目根目录的lib文件夹下，如果是Eclipse，找到驱动的位置，右击并build path即可。如果是IDEA第一步相同，还需要在File/Project Structure/Libraries 菜单栏里的+号添加这个包。</p>
+<p>•可以调用 DriverManager 类的 getConnection() 方法建立到数据库的连接</p>
+<p>•JDBC URL 用于标识一个被注册的驱动程序，驱动程序管理器通过这个 URL 选择正确的驱动程序，从而建立到数据库的连接。</p>
+<p>•JDBC URL的标准由三部分组成，各部分间用冒号分隔。</p>
+<p>–jdbc:&lt;子协议&gt;:&lt;子名称&gt;</p>
+<p>–协议：JDBC URL中的协议总是jdbc </p>
+<p>–子协议：子协议用于标识一个数据库驱动程序</p>
+<p>–子名称：一种标识数据库的方法。子名称可以依不同的子协议而变化，用子名称的目的是为了定位数据库提供足够的信息</p>
+<p>例如<code>jdbc:mysql://localhost:3306/test</code></p>
+<p>最基础的获取连接的方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* DriverTest.java
+*/</span>
+
+<span class="token keyword">package</span> com<span class="token punctuation">.</span>study<span class="token punctuation">.</span>JDBC<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>Connection<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>SQLException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Collection<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Properties<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DriverTest</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Driver 是一个接口：数据库厂商必须提供实现实现接口，能从其中获取数据库接口
+     */</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1.创建一个Driver实现类的对象</span>
+        Driver driver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//2.准备连接数据库的基本信息：url，password，user</span>
+        String url <span class="token operator">=</span> <span class="token string">"jdbc:mysql://localhost:3306/employees"</span><span class="token punctuation">;</span>
+        Properties p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3.使用Driver接口的connect获取数据库连接</span>
+        Connection connection <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DriverTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>注意</strong>：mysql8.0版本需要用的是<code>com.mysql.cj.jdbc.Driver()</code>这个驱动，而以下的用的是<code>com.mysql.jdbc.Driver()</code>,否则会连接不成功</p>
+<p>改进后的连接方式：</p>
+<pre class=" language-java"><code class="language-java">
+
+<span class="token keyword">public</span> Connection <span class="token function">newTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ClassNotFoundException<span class="token punctuation">,</span> IllegalAccessException<span class="token punctuation">,</span> InstantiationException<span class="token punctuation">,</span> SQLException <span class="token punctuation">{</span>
+        String DriverClass <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        String jdbcUrl <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        String user <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        String password <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//采用输入流的方式导入配置文件</span>
+        InputStream in <span class="token operator">=</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"jdbc.properties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Properties properties <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        properties<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        DriverClass <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jdbcUrl <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"jdbcUrl"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        password <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Properties info <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        info<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        info<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">,</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token comment" spellcheck="true">//采用反射的方式获取Driver对象，配置文件需要配置全类名。</span>
+        Driver driver <span class="token operator">=</span> <span class="token punctuation">(</span>Driver<span class="token punctuation">)</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>DriverClass<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Connection connection <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>jdbcUrl<span class="token punctuation">,</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> connection<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<pre class=" language-properties"><code class="language-properties">/*
+jdbc.properties
+*/
+<span class="token attr-name">driver</span> <span class="token punctuation">=</span> <span class="token attr-value">com.mysql.cj.jdbc.Driver</span>
+<span class="token attr-name">jdbcUrl</span> <span class="token punctuation">=</span> <span class="token attr-value">jdbc:mysql://localhost:3306/test</span>
+<span class="token attr-name">user</span> <span class="token punctuation">=</span> <span class="token attr-value">root</span>
+<span class="token attr-name">password</span> <span class="token punctuation">=</span> <span class="token attr-value">root</span></code></pre>
+<p>采用DriverManage接口进一步改进</p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> Connection <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//准备连接数据库的四个字符串</span>
+        <span class="token comment" spellcheck="true">//1.获取Properties对象</span>
+        Properties properties <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2.获取配置文件的输入流</span>
+        InputStream in <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"jdbc.properties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3.加载对应流</span>
+        properties<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//4.获取对应的字段名</span>
+        String user <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String password <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String jdbcUrl <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"jdbcUrl"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String DriverClass <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 加载数据库的驱动程序</span>
+        Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>DriverClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 获取连接</span>
+        Connection connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>jdbcUrl<span class="token punctuation">,</span>user<span class="token punctuation">,</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> connection<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>用DriverManage的好处：不用properties对象导入user和password，而且可以注册多个数据库驱动程序。</p>
+<h2 id="通过Statement执行更新"><a href="#通过Statement执行更新" class="headerlink" title="通过Statement执行更新"></a>通过Statement执行更新</h2><pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">TestStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException<span class="token punctuation">,</span> IOException<span class="token punctuation">,</span> ClassNotFoundException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1. 获取数据库连接</span>
+        Connection connection <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2.准备插入SQL语句</span>
+        String sql <span class="token operator">=</span> <span class="token string">"INSERT INTO customer (name, email, birth) VALUES('lulu','1141319552@qq.com','1999-04-10')"</span><span class="token punctuation">;</span>
+        Statement statement <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3.获取statement对象 执行插入</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            connection <span class="token operator">=</span> <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            statement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            statement<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//4.关闭statement对象</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>statement<span class="token operator">!=</span>null<span class="token punctuation">)</span>
+                statement<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//5.关闭连接</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>connection<span class="token operator">!=</span>null<span class="token punctuation">)</span>
+                connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span></code></pre>
+<p><strong>注意：</strong>①传入的SQL语句只能是更新语句，不能是查询语句。</p>
+<p>&emsp;&emsp;&emsp;②必须关闭statement对象和connection对象。</p>
+<p>&emsp;&emsp;&emsp;③关闭顺序必须是后打开的先关闭。</p>
+<h2 id="通过ResultSet执行查询"><a href="#通过ResultSet执行查询" class="headerlink" title="通过ResultSet执行查询"></a>通过ResultSet执行查询</h2><p>ResultSet:结果集。封装了使用JDBC进行查询的结果。</p>
+<p>1.调用Statement对象的executeQuery(sq1)可以得到结果集。</p>
+<p>2.ResultSet 返回的实际上就是一张数据表。 有一个指针指向数据表的第一样的前面.可以调用next()方法检测下一行是否有效。若有效该方法返回true,且指针下移。相当于Iterator对象的hasNext()和next()方法的结合体。</p>
+<p>3.当指针对位到一行时，可以通过调用getxxx(index)或getxxx( columnName )获取每一列的值。例如: getInt(1), getString(“name” )。</p>
+<p>4.ResultSet 当然也需要进行关闭。</p>
+<pre class=" language-java"><code class="language-java"># ResultSet测试类
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">TestResultSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 获取id=2的customer数据表中的记录</span>
+        <span class="token comment" spellcheck="true">//1.获取Connection</span>
+        Connection connection <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        Statement statement <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        ResultSet rs <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//2.获取Statement</span>
+            connection <span class="token operator">=</span> JDBCTools<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            statement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//3.准备SQL</span>
+            String sql <span class="token operator">=</span> <span class="token string">"select id, name, email, birth from customer where id = 2"</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//4.执行查询，得到ResultSet</span>
+            rs <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//5.处理ResultSet</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> id <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                String name <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                String email <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Date birth <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getDate</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>birth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            JDBCTools<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span>connection<span class="token punctuation">,</span> statement<span class="token punctuation">,</span> rs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>这里出现了一个连接数据库的小问题，报<font color="red">“Host ‘127.0.0.1’ is not allowed to connect to this MySQL server”</font>这个错误，那是因为MySQL的配置文件中设置了参数： <font color="red">skip-name-resolve</font>，将它注释了就行。</p>
+<h2 id="面向对象编写JDBC程序"><a href="#面向对象编写JDBC程序" class="headerlink" title="面向对象编写JDBC程序"></a>面向对象编写JDBC程序</h2><p>1.将数据库的表的内容生成一个Java类，这类成为JavaBean，其中有数据库中的所有字段，还有对应的Setter和Getter方法，以及默认的构造函数和toString函数。</p>
+<p>2.编写需要执行SQL语句，利用JavaBean的getter、setter方法来获取需要执行的操作。</p>
 
             </div>
             <hr/>
@@ -537,7 +709,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://localhost:4000/2020/02/11/mysql-xue-xi-zong-jie/">http://localhost:4000/2020/02/11/mysql-xue-xi-zong-jie/</a>
+                    <a href="http://localhost:4000/2020/02/11/jdbc-diary1/">http://localhost:4000/2020/02/11/jdbc-diary1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -583,16 +755,12 @@
                                     <span class="chip bg-color">寒假</span>
                                 </a>
                             
-                                <a href="/tags/%E6%80%BB%E7%BB%93/">
-                                    <span class="chip bg-color">总结</span>
-                                </a>
-                            
                                 <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
                                     <span class="chip bg-color">数据库</span>
                                 </a>
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -1025,32 +1193,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/11/jdbc-diary1/">
+                <a href="/2020/02/12/shu-ju-ku-lian-jie-cuo-wu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="JDBC Diary1">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="数据库连接错误">
                         
-                        <span class="card-title">JDBC Diary1</span>
+                        <span class="card-title">数据库连接错误</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JDBC Diary1前言：&emsp;&emsp;MySQL学完了，现在该学JDBC了，虽然在课堂上学过，但还是觉得没啥用。MySQL博客写的有些枯燥，这里会做一些改进，把一些出现的问题和其解决方案也一并附上。
-数据持久化&emsp;&e
+                            出现Host ‘127.0.0.1’ is not allowed to connect to this MySQL server解决方法出现了一个连接数据库的小问题，报“Host ‘127.0.0.1’ is not allowed to
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-11
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/error/" class="post-category">
+                                    error
                                 </a>
                             
                             
@@ -1060,20 +1227,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">学习</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AF%92%E5%81%87/">
-                        <span class="chip bg-color">寒假</span>
-                    </a>
-                    
                     <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
                         <span class="chip bg-color">数据库</span>
                     </a>
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/JDBC/">
+                        <span class="chip bg-color">JDBC</span>
+                    </a>
+                    
+                    <a href="/tags/error/">
+                        <span class="chip bg-color">error</span>
                     </a>
                     
                 </div>
@@ -1087,23 +1250,20 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/11/mysql-diary6/">
+                <a href="/2020/02/11/mysql-xue-xi-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="MySQL-Diary6">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="MySQL 学习总结">
                         
-                        <span class="card-title">MySQL-Diary6</span>
+                        <span class="card-title">MySQL 学习总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL Diary6一、标识列含义：可以不用手动插入值，系统提供默认的序列值。
-特点：一个表至多一个标识列，而且必须是一个键，而且只能标识数值型。
-1.创建表时设置标识列# 使用AUTO_INCREMENT关键字
-
-CREATE TAB
+                            MySQL 学习总结&emsp;&emsp;经过4天的高效学习，把MySQL的基础基本都掌握了，持续的高效学习让我头晕目眩，真是累呢。
+&emsp;&emsp;要感谢B站UP主代码基基提供的学习资料，B站的链接（点击这里），主要看这里的学习
                         
                     </div>
                     <div class="publish-info">
@@ -1118,6 +1278,10 @@ CREATE TAB
                                     数据库
                                 </a>
                             
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%80%BB%E7%BB%93/" class="post-category">
+                                    总结
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1131,6 +1295,10 @@ CREATE TAB
                     
                     <a href="/tags/%E5%AF%92%E5%81%87/">
                         <span class="chip bg-color">寒假</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">总结</span>
                     </a>
                     
                     <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
