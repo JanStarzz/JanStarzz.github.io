@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring diary1, Life, study, share, communication">
-    <meta name="description" content="
-Spring学习由于个人因素spring刚开始的学习没有记录到博客上，只能从这节开始记录
-一.Spring介绍​        Spring4.0是 Spring 推出的一个重大版本升级，进一步加强了 Spring 作为 Java 领域第">
+    <meta name="keywords" content="JDBC Diary2, Life, study, share, communication">
+    <meta name="description" content="JDBC Diray2PreparedStatement使用原因：1.使用Statement写入SQL语句字符串太长，辨识度不高容易出错，而使用PreparedStatement代码清晰，容易查看。
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;e">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Spring diary1 | Jan&#39;s blogs</title>
+    <title>JDBC Diary2 | Jan&#39;s blogs</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,12 +304,12 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring diary1</h1>
+                    <h1 class="description center-align post-title">JDBC Diary2</h1>
                 </div>
             </div>
         </div>
@@ -427,16 +426,20 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/spring/">
-                                <span class="chip bg-color">spring</span>
-                            </a>
-                        
                             <a href="/tags/%E5%AD%A6%E4%B9%A0/">
                                 <span class="chip bg-color">学习</span>
                             </a>
                         
                             <a href="/tags/%E5%AF%92%E5%81%87/">
                                 <span class="chip bg-color">寒假</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -460,28 +463,28 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-07
+                    2020-02-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-07
+                    2020-02-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    309
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -497,21 +500,147 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<h1 id="Spring学习"><a href="#Spring学习" class="headerlink" title="Spring学习"></a>Spring学习</h1><p>由于个人因素spring刚开始的学习没有记录到博客上，只能从这节开始记录</p>
-<h2 id="一-Spring介绍"><a href="#一-Spring介绍" class="headerlink" title="一.Spring介绍"></a>一.Spring介绍</h2><p>​        Spring4.0是 Spring 推出的一个重大版本升级，进一步加强了 Spring 作为 Java 领域第一开源平台的地位。Spring4.0 引入了众多 Java 开发者期盼的新特性，如泛型依赖注入、SpEL、校验及格式化框架、Rest风格的 WEB 编程模型等。这些新功能实用性强、易用性高，可大幅降低 JavaEE 开发的难度，同时有效提升应用开发的优雅性。</p>
-<p>1.Spring是一个开源框架。</p>
-<p>2.Spring为简化企业级应用开发而生。使用Spring可以使简单的JavaBean实现以前只有EJB才能实现的功能。</p>
-<p>3.Spring是一个IOC（DI）和AOP容器框架</p>
-<p><strong>特点：</strong></p>
-<p>​        -轻量级</p>
-<p>​        -依赖注入（DI）</p>
-<p>​        -面向切面编程（AOP）</p>
-<p>​        -容器</p>
-<p>​        -框架</p>
-<p>​        -一站式</p>
-<p><img src="/2020/02/07/spring-diary1/arch1.png" alt="p1"></p>
-<h2 id="二-Spring学习来源"><a href="#二-Spring学习来源" class="headerlink" title="二.Spring学习来源"></a>二.Spring学习来源</h2><p>​        博主的学习资料来自于一个叫做<strong>代码基基</strong>的UP主，视频链接<u><a href="https://www.bilibili.com/video/av59570922" target="_blank" rel="noopener">点击这里</a></u>。这里已经得到了UP主的授权，视频一共36节，辅助学习地方用到了w3cschool的教程，希望对大家有所帮助！</p>
+                <h1 id="JDBC-Diray2"><a href="#JDBC-Diray2" class="headerlink" title="JDBC Diray2"></a>JDBC Diray2</h1><h2 id="PreparedStatement"><a href="#PreparedStatement" class="headerlink" title="PreparedStatement"></a>PreparedStatement</h2><p><strong>使用原因：</strong>1.使用Statement写入SQL语句字符串太长，辨识度不高容易出错，而使用PreparedStatement代码清晰，容易查看。</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;2.PreparedStatement是Statement的子接口，功能更丰富，使用了带占位符的字符串，并且提供了传入占位符的方法。</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;3.可以有效的防止SQL注入。</p>
+<p><strong>SQL注入：</strong>例如当你要查询用户表的时候，原本SQL语句是<code>SELECT * FROM users WHERE username=? AND password=?;</code>，SQL注入后<code>SELECT * FROM users WHERE username =&#39;a&#39; OR password =&#39; AND password = &#39; OR &#39;1&#39; = &#39;1&#39;;</code></p>
+<h2 id="利用反射和JDBC元数据编写通用方法"><a href="#利用反射和JDBC元数据编写通用方法" class="headerlink" title="利用反射和JDBC元数据编写通用方法"></a>利用反射和JDBC元数据编写通用方法</h2><p>1.先利用SQL进行查询，得到结果集</p>
+<p>2.获取结果集的列的别名</p>
+<p>3.利用反射创建实体类的对象</p>
+<p>4.再获取结果集的每一列的值，结合3得到一个map，键：列的别名，值：列的值</p>
+<p>5.在利用反射为2的对应的属性赋值，属性即为Map的键，值即为Map的值。  </p>
+<p>Java通过JDBC获得连接以后，得到一个Connection 对象，可以从这个对象获得有关数据库管理系统的各种信息，包括数据库中的各个表，表中的各个列，数据类型，触发器，存储过程等各方面的信息。根据这些信息，JDBC可以访问一个实现事先并不了解的数据库。</p>
+<p>获取这些信息的方法都是在DatabaseMetaData类的对象上实现的，DataBaseMetaData对 象是在Connection对象上获得的。</p>
+<p><strong>DatabaseMetaData类</strong>中提供了许多方法用于获得数据源的各种信息，通过这些方法可以非常详细的了解数据库的信息:</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">getURL()</td>
+<td align="center">返回一个String类对象,代表数据库的URL。</td>
+</tr>
+<tr>
+<td align="center">getUserName()</td>
+<td align="center">返回连接当前数据库管理系统的用户名。</td>
+</tr>
+<tr>
+<td align="center">isReadOnly()</td>
+<td align="center">返回-个boolean值,指示数据库是否只允许读操作。</td>
+</tr>
+<tr>
+<td align="center">getDatabaseProductName()</td>
+<td align="center">返回数据库的产品名称。</td>
+</tr>
+<tr>
+<td align="center">getDatabaseProductVersion()</td>
+<td align="center">返回数据库的版本号。</td>
+</tr>
+<tr>
+<td align="center">getDriverName()</td>
+<td align="center">返回驱动驱动程序的名称。</td>
+</tr>
+<tr>
+<td align="center">getDriverVersion()</td>
+<td align="center">返回驱动程序的版本号。</td>
+</tr>
+</tbody></table>
+<p>用<strong>ResultSetMetaData</strong>类可以获取ResultSet对象中的类型和属性信息。</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">getColumnName(int column)</td>
+<td align="center">获取指定列的名称</td>
+</tr>
+<tr>
+<td align="center">getColumnCount()</td>
+<td align="center">返回当前ResultSet对象中的列数</td>
+</tr>
+<tr>
+<td align="center">getColumnTypeName(int column)</td>
+<td align="center">检索指定列的数据库特定的类型名称</td>
+</tr>
+<tr>
+<td align="center">getColumnDisplaysizelint column)</td>
+<td align="center">指示指定列的最大标准宽度，以字符为单位</td>
+</tr>
+<tr>
+<td align="center">isNullable(int column)</td>
+<td align="center">指示指定列中的值是否可以为null</td>
+</tr>
+<tr>
+<td align="center">isAutoIncrement(int column)</td>
+<td align="center">指示是否自动为指定列进行编号，这样这些列仍然是只读的</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">public</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">get</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span>T<span class="token operator">></span>clazz<span class="token punctuation">,</span> String sql<span class="token punctuation">,</span> Object <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> arg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        T entity <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        Connection connection <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        PreparedStatement preparedStatement <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        ResultSet resultSet <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//1. 得到 ResultSet 对象</span>
+            connection <span class="token operator">=</span> JDBCTools<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            preparedStatement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arg<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                preparedStatement<span class="token punctuation">.</span><span class="token function">setObject</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> arg<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            resultSet <span class="token operator">=</span> preparedStatement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//2. 得到 ResultSetMetaData 对象</span>
+            ResultSetMetaData rsmd <span class="token operator">=</span> resultSet<span class="token punctuation">.</span><span class="token function">getMetaData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//3. 创建一个 Map&lt;String, Object> 对象, 键: SQL 查询的列的别名,</span>
+            <span class="token comment" spellcheck="true">//值: 列的值</span>
+            Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> values <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//4. 处理结果集. 利用 ResultSetMetaData 填充 3 对应的 Map 对象</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rsmd<span class="token punctuation">.</span><span class="token function">getColumnCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    String columnLabel <span class="token operator">=</span> rsmd<span class="token punctuation">.</span><span class="token function">getColumnLabel</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Object columnValue <span class="token operator">=</span> resultSet<span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                    values<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>columnLabel<span class="token punctuation">,</span> columnValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">//5. 若 Map 不为空集, 利用反射创建 clazz 对应的对象</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>values<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                entity <span class="token operator">=</span> clazz<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token comment" spellcheck="true">//5. 遍历 Map 对象, 利用反射为 Class 对象的对应的属性赋值.</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span>Map<span class="token punctuation">.</span>Entry<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> entry<span class="token operator">:</span> values<span class="token punctuation">.</span><span class="token function">entrySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    String fieldName <span class="token operator">=</span> entry<span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Object value <span class="token operator">=</span> entry<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    ReflectionUtils<span class="token punctuation">.</span><span class="token function">setFieldValue</span><span class="token punctuation">(</span>entity<span class="token punctuation">,</span> fieldName<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            JDBCTools<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span>connection<span class="token punctuation">,</span>preparedStatement<span class="token punctuation">,</span>resultSet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token keyword">return</span> entity<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span></code></pre>
+<h2 id="DAO设计模式"><a href="#DAO设计模式" class="headerlink" title="DAO设计模式"></a>DAO设计模式</h2><p><strong>DAO:</strong> Data Access Object。包含了访问数据信息的类。包含了对数据CRUD（create，read，update，delete）。而不包括任何业务的相关信息。DAO可以被子类继承也可以直接使用。</p>
+<p>使用JDBC编写DAO可能会包含的方法：</p>
+<p>更新：<code>void update(String sql, bject ...args);</code>  </p>
+<p>查询：①<code>&lt;T&gt; T get(Class&lt;T&gt; clazz, String sql, OBject ... args);</code></p>
+<p>②<code>&lt;T&gt; List&lt;T&gt; getForList(Class&lt;T&gt; clazz, String sql, OBject ... args);</code></p>
+<p>③<code>&lt;E&gt; E getForvalue(String sq1, Object ... args);</code></p>
+<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><p>Java 类的属性:<br>①在JavaEE 中，Java类的属性通过<strong>getter</strong>, <strong>setter</strong> 来定义: get(或set)方法，去除get(或set)后,后字母小写即为Java类的属性<br>②而以前叫的那个属性，即<strong>成员变量</strong>，称之为字段<br>③一般情况下，字段名和属性名都<strong>一致</strong><br>④操作Java类的属性有一个工具包: <strong>beanutils</strong></p>
 
             </div>
             <hr/>
@@ -537,7 +666,7 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://localhost:4000/2020/02/07/spring-diary1/">http://localhost:4000/2020/02/07/spring-diary1/</a>
+                    <a href="http://localhost:4000/2020/02/13/jdbc-diary2/">http://localhost:4000/2020/02/13/jdbc-diary2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -575,16 +704,20 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/spring/">
-                                    <span class="chip bg-color">spring</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%AD%A6%E4%B9%A0/">
                                     <span class="chip bg-color">学习</span>
                                 </a>
                             
                                 <a href="/tags/%E5%AF%92%E5%81%87/">
                                     <span class="chip bg-color">寒假</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -1013,31 +1146,31 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/07/spring-diary2/">
+                <a href="/2020/02/13/jdbc-diary2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Spring Diary2">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JDBC Diary2">
                         
-                        <span class="card-title">Spring Diary2</span>
+                        <span class="card-title">JDBC Diary2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            通过注解配置Bean1.在classpath中扫描组件1.Spring能从classpath下自动扫描，侦测和实例化具有特定注解的组件
-2.特定的组件包括：
-​        -@Component：基本注解，表示了一个受Spring管理的
+                            JDBC Diray2PreparedStatement使用原因：1.使用Statement写入SQL语句字符串太长，辨识度不高容易出错，而使用PreparedStatement代码清晰，容易查看。
+&emsp;&emsp;&emsp;&e
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1050,12 +1183,9 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/spring/">
-                        <span class="chip bg-color">spring</span>
-                    </a>
                     
                     <a href="/tags/%E5%AD%A6%E4%B9%A0/">
                         <span class="chip bg-color">学习</span>
@@ -1063,6 +1193,14 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                     
                     <a href="/tags/%E5%AF%92%E5%81%87/">
                         <span class="chip bg-color">寒假</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1076,31 +1214,31 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/06/my-firsy-blog/">
+                <a href="/2020/02/12/shu-ju-ku-lian-jie-cuo-wu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="My firsy blog">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="数据库连接错误">
                         
-                        <span class="card-title">My firsy blog</span>
+                        <span class="card-title">数据库连接错误</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            经过不懈的努力 终于把网站搭建成功并发表了第一篇blog，从今天开始我和璐璐每天的学习都会在这里记录下来，加油！2020！
+                            出现Host ‘127.0.0.1’ is not allowed to connect to this MySQL server解决方法出现了一个连接数据库的小问题，报“Host ‘127.0.0.1’ is not allowed to
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/error/" class="post-category">
+                                    error
                                 </a>
                             
                             
@@ -1110,8 +1248,16 @@ Spring学习由于个人因素spring刚开始的学习没有记录到博客上�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%94%9F%E6%B4%BB/">
-                        <span class="chip bg-color">生活</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/JDBC/">
+                        <span class="chip bg-color">JDBC</span>
+                    </a>
+                    
+                    <a href="/tags/error/">
+                        <span class="chip bg-color">error</span>
                     </a>
                     
                 </div>
