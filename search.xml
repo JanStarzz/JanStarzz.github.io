@@ -4,6 +4,93 @@
   
     
     <entry>
+      <title>token防止表单重复提交</title>
+      <link href="/2020/03/20/token-fang-zhi-biao-dan-chong-fu-ti-jiao/"/>
+      <url>/2020/03/20/token-fang-zhi-biao-dan-chong-fu-ti-jiao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="token防止表单重复提交"><a href="#token防止表单重复提交" class="headerlink" title="token防止表单重复提交"></a>token防止表单重复提交</h1><h2 id="1-表单的重复提交"><a href="#1-表单的重复提交" class="headerlink" title="1.表单的重复提交"></a>1.表单的重复提交</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>多次提交了相同的内容的表单</p><h3 id="危害："><a href="#危害：" class="headerlink" title="危害："></a>危害：</h3><p>1.数据库多次保存相同的错误</p><p>2.安全问题</p><p>3.服务器性能问题</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>HTTP是无状态协议，每次HTTP请求过来都会创建一个新的TCP连接</p><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p>1.成功以后，直接刷新页面（每次刷新就是重复上一次的请求）</p><p>解决方法：将转发转换为重定向</p><p>2.网速服务器性能差，导致处理请求慢。（狂点注册）</p><p>解决方法：将提交按钮提交后转为不可用（使用原生js和jQuery）</p><p>3.用户成功后点击后退，再次提交</p><p>解决方法：采用令牌机制（token）</p><p>每次提交表单，带上令牌，服务器验证扣篮，口令合法处理请求，不合法打回。</p><p><img src="/2020/03/20/token-fang-zhi-biao-dan-chong-fu-ti-jiao/token%E9%98%B2%E6%AD%A2%E8%A1%A8%E5%8D%95%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4.png" alt="原理图"></p><pre class=" language-jsp"><code class="language-jsp"><%--index.jsp--%><%@page import="java.util.UUID"%><%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Insert title here</title><script type="text/javascript">/*     window.onload = function(){        var btn = document.getElementById("subId");        btn.onclick =  function(){            //alert("xxx");            //将按钮变灰,他会不提交表单            this.disabled = true;            //提交表单            var formEle = document.getElementsByTagName("form")[0];            formEle.submit();        };    }; */</script></head><body><%    //产生一个唯一不重复的令牌    String uuid = UUID.randomUUID().toString();    session.setAttribute("token", uuid);%><form action="UserServlet" method="post">    用户名：<input type="text" name="username"/>    <input type="hidden" name="token" value="<%=uuid%>"/>     <input type="submit" value="注册" id="subId"/></form></body></html></code></pre><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//UsernameServlet.java</span><span class="token keyword">package</span> com<span class="token punctuation">.</span>atguigu<span class="token punctuation">.</span>servlet<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>UUID<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServlet<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpSession<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/** * Servlet implementation class UserServlet */</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> 1L<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/**     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)     */</span>    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// TODO Auto-generated method stub</span>        <span class="token function">doPost</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token comment" spellcheck="true">/**     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)     */</span>    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// TODO Auto-generated method stub</span>        <span class="token keyword">try</span> <span class="token punctuation">{</span>            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">//在servlet中应该有一个一模一样的令牌，这样每次提交来的数据会带上令牌，我们服务器</span>        <span class="token comment" spellcheck="true">//可以验证和我本地的令牌是否一致</span>        HttpSession session <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//从session中获取令牌,服务器从session中取出的令牌</span>        String token <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span> session<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//再从页面取出令牌对照一下</span>        String pageToken <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"服务器端取到的令牌："</span><span class="token operator">+</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"页面带过来的令牌："</span><span class="token operator">+</span>pageToken<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//如果在这里把session中的令牌变化,直接将服务器中的令牌移除。第二次请求过来，</span>        <span class="token comment" spellcheck="true">//服务器中的token没值，页面会带来缓存的token</span>        <span class="token comment" spellcheck="true">//null   daskjldjaklj</span>        session<span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//对照令牌，如果一致，提交请求，否则不提交</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>pageToken<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token comment" spellcheck="true">//获取用户名</span>            String username <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//保存到数据</span>            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>username<span class="token operator">+</span><span class="token string">"已经保存到数据库"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//转发到页面</span>            request<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">"/success.jsp"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//response.sendRedirect(request.getContextPath()+"/success.jsp");</span>        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>            response<span class="token punctuation">.</span><span class="token function">sendRedirect</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getContextPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"/error.jsp"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> Java-Web </tag>
+            
+            <tag> 雷神的学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Jsp</title>
+      <link href="/2020/03/06/jsp/"/>
+      <url>/2020/03/06/jsp/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1、jsp运行原理"><a href="#1、jsp运行原理" class="headerlink" title="1、jsp运行原理"></a>1、jsp运行原理</h2><p>​    1）、我们发现index.jsp页面被翻译成了一个index_jsp.java —&gt;index_jsp.class<br>​    2）、我们发现HttpJspBase继承HttpServlet，所以index_jsp就是一个Servlet<br>​    3）、每次请求都调用_jspService()</p><h2 id="2、jsp基本语法"><a href="#2、jsp基本语法" class="headerlink" title="2、jsp基本语法"></a>2、jsp基本语法</h2><p>​    1、html模板元素   html标签<br>​    2、jsp脚本片段        &lt;%   %&gt;<br>​    3、jsp表达式    &lt;%=new Date() %&gt;<br>​    4、jsp声明    &lt;%!     代码代码代码…      %&gt;<br>​            jsp声明里面的代码都会写在jspservice方法之外，写在test2_jsp.java类的里面<br>​        比较少用。</p><p>​    </p><p>5、jsp指令<br>        JSP指令（directive）是为JSP引擎而设计的，它们并不直接产生任何可见输出，<br>    而只是告诉引擎如何处理JSP页面中的其余部分。<br>    &lt;%@ 指令名    属性名=属性值  %&gt;<br>    page指令：    定义页面是如何解析<br>    include指令：    静态包含<br>    taglib指令：    在页面引入标签库</p><pre><code>page指令属性  1）import：用来在页面导包  2）pageEncoding：指定页面使用的字符集，也是告诉jsp引擎使用指定的编码翻译  3）contentType：设置响应头，页面如何响应给浏览器  4）errorPage：指定页面发生错误去向的页面  5）isErrorPage：表示当前页面是一个错误页面。  6）session：默认session=&quot;true&quot;，当前页面是否参与会话，是否可以使用session对象  7）isELIgnored：是否忽略el表达式,默认false代表不忽略，   设置为true-忽略  8）info：定义页面的信息（描述）include指令：    静态包含    &lt;%@ 指令名  属性名=属性值%&gt;    &lt;%@ include  属性名=属性值%&gt;    可以把另外一个页面包含进来.他采用的方式是将整个页面复制到service方法里面。    jsp引擎不翻译和编译要包含的页面taglib指令：    在页面引入标签库&lt;%@ taglib  属性名=属性值%&gt;</code></pre><p>6、jsp标签 :jsp里面内置了很多标签，每个标签都有不同的功能，执行一段代码。action元素</p><pre><code>&lt;jsp:include&gt;：也是在页面包含另外一个页面    动态包含page:表示要包含的页面的路径他不是把整个页面复制过来，在一行行写出去org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, &quot;/grammer/250.jsp&quot;, out, false);把要包含的页面会先翻译出来，在编译出来，再包含。</code></pre><h2 id="3、jsp九大隐含对象"><a href="#3、jsp九大隐含对象" class="headerlink" title="3、jsp九大隐含对象"></a>3、jsp九大隐含对象</h2><p>​    隐含对象：是我们在页面直接可以使用的对象<br>​    </p><p>五大常规对象：<br>Throwable exception = null;        代表捕获异常对象<br>ServletConfig config = null;        代表servlet配置信息<br>    servlet–》 jsp页面对应的servlet<br>    config    jsp页面对应的servlet的配置信息<br>    config.getServletName();</p><p>JspWriter out = null;                代表可以在页面输出数据的out对象<br>    out.write();</p><p>Object page = this;                    代表当前jsp<br>    还没this实用</p><p>HttpServletResponse response        代表当次响应的对象<br>    response    </p><p>​<br>​    </p><p>四大域对象：域对象用来在其他资源共享数据<br>     PageContext pageContext = null;  代表当前页面对象</p><p>                1、获取其它隐含对象  pageContext.getXX();</p><p>​            2、作为域对象共享数据。只能在当前页面共享数据，离开页面就无法共享<br>​                String key ，Object value<br>​                通过调用域对象.setAttribute(key,value)，给相应的域中设置内容<br>​                域对象.getAttribute(key)  获取域中的内容<br>​<br>​     HttpServletRequest request,            代表封装当次请求详细信息的对象<br>​             1、在同一个请求对象中共享数据，只要是同一次请求，就可以共享数据<br>​<br>​     HttpSession session = null;        代表会话对象<br>​             1、同一次会话共享数据     浏览器打开-开始会话      浏览器关闭-结束会话<br>​                会话就是和web应用沟通，所以不同web应用就是不同会话</p><p>​                   </p><p>​     ServletContext application = null;    代表整个web应用<br>​             1、application代表当前web应用。<br>​                 只要在同一个web应用中都可以共享数据。<br>​                 web应用只要不卸载都可以访问</p><table><thead><tr><th>域对象</th><th>作用范围</th><th>起始时间</th><th>结束时间</th></tr></thead><tbody><tr><td>pageContext</td><td>当前JSP页面</td><td>页面加载</td><td>离开页面</td></tr><tr><td>request</td><td>同一个请求</td><td>收到请求</td><td>响应</td></tr><tr><td>session</td><td>同一个会话</td><td>开始会话</td><td>结束会话</td></tr><tr><td>application</td><td>当前Web应用</td><td>Web应用加载</td><td>Web应用卸载</td></tr></tbody></table><p>​<br>​<br>​<br>​<br>​<br>​        </p><p>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​    </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Jsp </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> Jsp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于JDBC配置文件在web中的路径问题</title>
+      <link href="/2020/03/05/guan-yu-jdbc-pei-zhi-wen-jian-zai-web-zhong-de-lu-jing-wen-ti/"/>
+      <url>/2020/03/05/guan-yu-jdbc-pei-zhi-wen-jian-zai-web-zhong-de-lu-jing-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<p>JDBC配置文件在web项目中的路径与其在普通项目中有所偏差，需要用到类加载器去找到资源。具体实现如下：</p><p>把配置文件放在src目录下。</p><pre class=" language-java"><code class="language-java"> <span class="token keyword">private</span> <span class="token keyword">static</span> Properties properties<span class="token punctuation">;</span>    <span class="token keyword">static</span> <span class="token punctuation">{</span>        properties <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//2.获取配置文件的输入流</span>        <span class="token keyword">try</span> <span class="token punctuation">{</span>            InputStream in <span class="token operator">=</span> JDBCUtil<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"jdbc.properties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//3.加载对应流</span>            properties<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> Connection <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//4.获取对应的字段名</span>        String user <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        String password <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        String jdbcUrl <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"jdbcUrl"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        String DriverClass <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 加载数据库的驱动程序</span>        Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>DriverClass<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 获取连接</span>        Connection connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>jdbcUrl<span class="token punctuation">,</span>user<span class="token punctuation">,</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> connection<span class="token punctuation">;</span>    <span class="token punctuation">}</span></code></pre><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">driver</span> <span class="token punctuation">=</span> <span class="token attr-value">com.mysql.cj.jdbc.Driver</span><span class="token attr-name">jdbcUrl</span> <span class="token punctuation">=</span> <span class="token attr-value">jdbc:mysql://localhost:3306/test</span><span class="token attr-name">user</span> <span class="token punctuation">=</span> <span class="token attr-value">root</span><span class="token attr-name">password</span> <span class="token punctuation">=</span> <span class="token attr-value">root</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> error </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> JDBC </tag>
+            
+            <tag> 技巧 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>xml</title>
       <link href="/2020/03/03/xml/"/>
       <url>/2020/03/03/xml/</url>
@@ -175,6 +262,8 @@
             
             <tag> Java </tag>
             
+            <tag> JDBC </tag>
+            
         </tags>
       
     </entry>
@@ -205,6 +294,8 @@
             <tag> 数据库 </tag>
             
             <tag> Java </tag>
+            
+            <tag> JDBC </tag>
             
         </tags>
       
@@ -265,6 +356,8 @@
             <tag> 数据库 </tag>
             
             <tag> Java </tag>
+            
+            <tag> JDBC </tag>
             
         </tags>
       
