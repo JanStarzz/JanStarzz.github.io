@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>JSON</title>
+      <link href="/2020/03/27/json/"/>
+      <url>/2020/03/27/json/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Filter的使用</title>
+      <link href="/2020/03/23/filter-de-shi-yong/"/>
+      <url>/2020/03/23/filter-de-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Filter的使用"><a href="#Filter的使用" class="headerlink" title="Filter的使用"></a>Filter的使用</h1><h2 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h2><p>过滤器属于web服务器的三大组件之一。（Servlet，Filter，Listener）</p><p>Filter是用来执行过滤任务的一个对象，作用于：</p><p>1.请求一个资源（动态资源Servlet，JSP，静态资源）</p><p>2.来自一个资源的响应</p><p>3.两个都可以</p><p>Filter过滤请求和响应</p><p>1.filter可以拦截请求（request），可以修改请求头，请求内容</p><p>2.filter可以拦截来自服务端的响应（response），可以修改响应头和响应内容</p><p>3.放行请求</p><h2 id="创建filter的步骤"><a href="#创建filter的步骤" class="headerlink" title="创建filter的步骤"></a>创建filter的步骤</h2><p>1.写一个实现类</p><p>2.在服务起配置filter要过滤那些请求</p><p>用web.xml配置</p><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>HelloFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.atguigu.filter.HelloFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>HelloFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>--!</span><span class="token punctuation">></span></span>拦截的url<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>--!</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/hello.jsp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span></code></pre><p>基于注解配置</p><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>study<span class="token punctuation">.</span>filter<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>WebFilter<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/** * @author Jan * @Date 2020/3/23 16:45 */</span><span class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span>filterName <span class="token operator">=</span> <span class="token string">"Filter"</span><span class="token punctuation">,</span>urlPatterns <span class="token operator">=</span> <span class="token string">"/hello.html"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Filter</span> <span class="token keyword">implements</span> <span class="token class-name">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>Filter</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span>javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletRequest req<span class="token punctuation">,</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletResponse resp<span class="token punctuation">,</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>FilterChain chain<span class="token punctuation">)</span> <span class="token keyword">throws</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是拦截器"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        String money <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"money"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>money<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token comment" spellcheck="true">//将请求放行</span>            chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> resp<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>            resp<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"no money"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>FilterConfig config<span class="token punctuation">)</span> <span class="token keyword">throws</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException <span class="token punctuation">{</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p><img src="/2020/03/23/filter-de-shi-yong/Filter%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86.png" alt="Filter运行原理"></p><h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>1、服务启动时先创建Filter对象，然后就初始化Filter。单例多线程</p><p>2、每次拦截都执行doFilter()方法</p><p>3、从服务器中卸载</p><h2 id="url-pattern配置"><a href="#url-pattern配置" class="headerlink" title="url-pattern配置"></a>url-pattern配置</h2><p>1、精确匹配：访问某个资源拦截</p><p>url-pattern直接设置成某个资源。<code>urlPatterns = &quot;/hello.html&quot;</code></p><p>2、路径匹配：访问某个路径下的所有资源</p><p>url-pattern直接设置成路径。<code>urlPatterns = &quot;/pages/*&quot;</code></p><p><code>/*</code>表示拦截所有资源</p><p>3、模糊匹配（后缀匹配）：访问某种类型的资源</p><p><code>urlPatterns = &quot;*.jsp&quot;</code></p><h2 id="放行之前乱码问题"><a href="#放行之前乱码问题" class="headerlink" title="放行之前乱码问题"></a>放行之前乱码问题</h2><p>现象:<br>        1)、在请求放行之前，使用response输出内容， 内容是追加到页面上了，但是页面的中文都乱码。<br>        2)、放行之前只要写中文就乱，带着页面一起乱。<br>        3)、放行之后写中文完全没问题。</p><p>解决方法：</p><p>用解决response乱码的问题解决或者在放行之后再用response写中文。</p><h2 id="Dispatcher属性"><a href="#Dispatcher属性" class="headerlink" title="Dispatcher属性"></a>Dispatcher属性</h2><p>在Filter中有一个dispatcher作为拦截报文，其中有四个属性</p><p>FORWORD：拦截转发过来的。</p><p>INCLUDE：拦截动态包含的。</p><p>REQUEST：拦截直接请求的，是默认的拦截方式。</p><p>ERROR：发生错误的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> 数据库 </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> JavaWeb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算数据精度解决</title>
+      <link href="/2020/03/22/ji-suan-shu-ju-jing-du-jie-jue/"/>
+      <url>/2020/03/22/ji-suan-shu-ju-jing-du-jie-jue/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>token防止表单重复提交</title>
       <link href="/2020/03/20/token-fang-zhi-biao-dan-chong-fu-ti-jiao/"/>
       <url>/2020/03/20/token-fang-zhi-biao-dan-chong-fu-ti-jiao/</url>
